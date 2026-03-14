@@ -1,65 +1,171 @@
 body {
-    background: #f0f4f8;
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    color: #e6ecff;
+    background: linear-gradient(135deg, #070a15, #0f1a32, #070a15);
+    background-size: 400% 400%;
+    animation: bgShift 18s ease infinite;
+    min-height: 100vh;
 }
 
-.game-container {
-    max-width: 400px;
-    margin: 60px auto;
-    background: #fff;
+/* --- Font style variants --- */
+
+body.font-orbitron {
+    font-family: "Orbitron", sans-serif;
+}
+
+body.font-inconsolata {
+    font-family: "Inconsolata", monospace;
+}
+
+body.font-josefin {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.font-picker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.font-picker label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.font-picker select {
+    padding: 6px 10px;
     border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    padding: 32px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #e6ecff;
+    box-shadow: 0 0 12px rgba(12, 22, 41, 0.4);
+    cursor: pointer;
+}
+.game-container {
+    max-width: 420px;
+    margin: 60px auto;
+    background: rgba(18, 25, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+    padding: 36px 26px;
     text-align: center;
+    backdrop-filter: blur(12px);
 }
 
 h1 {
-    color: #2d6cdf;
+    color: #9ac8ff;
     margin-bottom: 24px;
+    text-shadow: 0 0 18px rgba(154, 200, 255, 0.35);
 }
 
 .word-display {
-    font-size: 2rem;
-    letter-spacing: 0.5rem;
-    margin-bottom: 20px;
-    color: #333;
+    font-size: 2.2rem;
+    letter-spacing: 0.6rem;
+    margin-bottom: 22px;
+    color: #c8e6ff;
+    text-shadow: 0 0 14px rgba(162, 221, 255, 0.35);
+    transition: transform 0.2s ease;
 }
 
 input[type="text"] {
-    padding: 8px;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    width: 60px;
+    padding: 10px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    color: #e8f1ff;
+    width: 64px;
     text-align: center;
-    margin-right: 8px;
+    margin-right: 10px;
+    box-shadow: 0 0 15px rgba(18, 34, 59, 0.35);
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: rgba(129, 196, 255, 0.9);
+    box-shadow: 0 0 18px rgba(129, 196, 255, 0.5);
 }
 
 button {
-    padding: 8px 16px;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: none;
-    background: #2d6cdf;
+    padding: 10px 18px;
+    font-size: 1.05rem;
+    border-radius: 10px;
+    border: 1px solid rgba(64, 148, 255, 0.6);
+    background: rgba(52, 112, 255, 0.85);
     color: #fff;
     cursor: pointer;
-    transition: background 0.2s;
+    box-shadow: 0 14px 25px rgba(24, 43, 72, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 button:hover {
-    background: #1a4fa3;
+    transform: translateY(-1px);
+    background: rgba(55, 134, 255, 0.95);
+    box-shadow: 0 16px 28px rgba(26, 48, 82, 0.45);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 .message {
     margin-top: 16px;
     font-size: 1.1rem;
-    color: #e74c3c;
+    min-height: 1.4em;
+    transition: transform 0.2s ease;
+}
+
+.message.error {
+    color: #ff6b6b;
+}
+
+.message.success {
+    color: #7bffcb;
 }
 
 .attempts {
     margin-top: 12px;
-    color: #555;
+    color: rgba(226, 240, 255, 0.8);
     font-size: 1rem;
+}
+
+@keyframes bgShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(4px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+.shake {
+    animation: shake 0.35s ease;
+}
+
+.pulse {
+    animation: pulse 0.35s ease;
 }
