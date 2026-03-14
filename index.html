@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Guessing Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600&family=Josefin+Sans:wght@400;600&family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="game-container">
         <h1>Word Guessing Game</h1>
+        <div class="font-picker">
+            <label for="fontSelect">Font style:</label>
+            <select id="fontSelect">
+                <option value="orbitron">Orbitron (futuristic)</option>
+                <option value="inconsolata">Inconsolata (monospace)</option>
+                <option value="josefin">Josefin Sans (sleek)</option>
+            </select>
+        </div>
         <div class="word-display" id="wordDisplay">_ _ _ _ _</div>
         <input type="text" id="guessInput" maxlength="1" placeholder="Enter a letter">
         <button id="guessBtn">Guess</button>
